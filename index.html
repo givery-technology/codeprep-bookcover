@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>BookCover Builder</title>
+<style>
+canvas {
+  border: 1px solid #CCC;
+}
+</style>
+<script>
+var samples = [{
+  background: [{
+    rect: "0, 0, 150, 150",
+    color: "#30DACC"
+  }, {
+    rect: "0, 150, 150, 50",
+    color: "#176D60"
+  }],
+  text: [{
+    color: "#FFF",
+    font: "28px sans-serif",
+    pos: "20, 80",
+    text: "CSSの色"
+  }, {
+    color: "#FFF",
+    font: "16px sans-serif",
+    pos: "35, 105",
+    text: "を理解する"
+  }, {
+    color: "#FFF",
+    font: "12px sans-serif",
+    pos: "15, 180",
+    text: "CSS色の理論を学ぼう!"
+  }]
+}, {
+  background: [{
+    rect: "0, 0, 150, 150",
+    color: "#58BEC2"
+  }, {
+    rect: "0, 150, 150, 50",
+    color: "#2C5F62"
+  }],
+  text: [{
+    color: "#FFF",
+    font: "16px sans-serif",
+    pos: "15, 80",
+    text: "オブジェクト指向"
+  }, {
+    color: "#FFF",
+    font: "14px sans-serif",
+    pos: "20, 105",
+    text: "の基礎を理解する"
+  }, {
+    color: "#FFF",
+    font: "10px sans-serif",
+    pos: "15, 180",
+    text: "オブジェクト指向を学ぼう!"
+  }]
+}, {
+  background: [{
+    rect: "0, 0, 150, 150",
+    color: "#DAA13C"
+  }, {
+    rect: "0, 150, 150, 50",
+    color: "#6D5018"
+  }],
+  text: [{
+    color: "#FFF",
+    font: "20px sans-serif",
+    pos: "20, 80",
+    text: "Animate.css"
+  }, {
+    color: "#FFF",
+    font: "16px sans-serif",
+    pos: "35, 105",
+    text: "を使ってみる"
+  }, {
+    color: "#FFF",
+    font: "12px sans-serif",
+    pos: "15, 180",
+    text: "Animate.cssを学ぼう!"
+  }]
+}];
+
+var canvas, ctx;
+
+function parsePos(str) {
+  var array = str.split(",");
+  return {
+    x: parseInt(array[0].trim(), 10),
+    y: parseInt(array[1].trim(), 10)
+  };
+}
+function parseRect(str) {
+  var array = str.split(",");
+  return {
+    x: parseInt(array[0].trim(), 10),
+    y: parseInt(array[1].trim(), 10),
+    w: parseInt(array[2].trim(), 10),
+    h: parseInt(array[3].trim(), 10)
+  };
+}
+function drawBackground(data) {
+  var r = parseRect(data.rect);
+  ctx.fillStyle = data.color;
+  ctx.fillRect(r.x, r.y, r.w, r.h);
+}
+
+function drawText(data) {
+  var pos = parsePos(data.pos);
+  ctx.fillStyle = data.color;
+  ctx.font = data.font;
+  ctx.fillText(data.text, pos.x, pos.y);
+}
+
+function draw(data) {
+  var background = data.background || [];
+  background.forEach(v => drawBackground(v));
+  var text = data.text || [];
+  text.forEach(v => drawText(v));
+}
+
+function downloadImage() {
+  this.href = canvas.toDataURL();
+}
+
+function getJson() {
+  var text = document.getElementById('text').value;
+  return JSON.parse(text);
+}
+function generate() {
+  try {
+    var json = getJson();
+    draw(json);
+  } catch (e) {
+    alert("Can not parse JSON");
+  }
+}
+
+function sample() {
+  var index = parseInt(this.dataset.index);
+  var text = document.getElementById('text');
+  text.value = JSON.stringify(samples[index], null, 2);
+  generate();
+}
+
+window.addEventListener("load", function() {
+  canvas = document.getElementById('canvas');
+  ctx = canvas.getContext('2d');
+
+  document.getElementById("download").addEventListener("click", downloadImage);
+  document.getElementById("generate").addEventListener("click", generate);
+  [0, 1, 2].forEach(function(i) {
+    var el = document.getElementById("sample" + (i + 1));
+    el.addEventListener("click", sample);
+  });
+  document.getElementById("sample1").click();
+});
+</script>
+</head>
+<body>
+<h1>BookCover Builder</h1>
+<div>
+  <canvas id="canvas" height="200" width="150"/>
+</div>
+<div>
+  <button id="sample1" data-index="0">Sample1</button>
+  <button id="sample2" data-index="1">Sample2</button>
+  <button id="sample3" data-index="2">Sample3</button>
+</div>
+<div>
+  <textarea id="text" cols="60" rows="20"></textarea>  
+</div>
+<div>
+  <button id="generate">Generate</button>
+  <button><a id="download" download="cover.png">Download</a></button>
+</div>
+
+</body>
+</html>
