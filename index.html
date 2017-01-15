@@ -2,179 +2,38 @@
 <html>
 <head>
   <title>BookCover Builder</title>
-<style>
-canvas {
-  border: 1px solid #CCC;
-}
-</style>
-<script>
-var samples = [{
-  background: [{
-    rect: "0, 0, 300, 300",
-    color: "#30DACC"
-  }, {
-    rect: "0, 300, 300, 100",
-    color: "#176D60"
-  }],
-  text: [{
-    color: "#FFF",
-    font: "56px sans-serif",
-    pos: "40, 160",
-    text: "CSSの色"
-  }, {
-    color: "#FFF",
-    font: "32px sans-serif",
-    pos: "70, 210",
-    text: "を理解する"
-  }, {
-    color: "#FFF",
-    font: "24px sans-serif",
-    pos: "30, 360",
-    text: "CSS色の理論を学ぼう!"
-  }]
-}, {
-  background: [{
-    rect: "0, 0, 300, 300",
-    color: "#58BEC2"
-  }, {
-    rect: "0, 300, 300, 100",
-    color: "#2C5F62"
-  }],
-  text: [{
-    color: "#FFF",
-    font: "32px sans-serif",
-    pos: "30, 160",
-    text: "オブジェクト指向"
-  }, {
-    color: "#FFF",
-    font: "28px sans-serif",
-    pos: "40, 210",
-    text: "の基礎を理解する"
-  }, {
-    color: "#FFF",
-    font: "20px sans-serif",
-    pos: "30, 360",
-    text: "オブジェクト指向を学ぼう!"
-  }]
-}, {
-  background: [{
-    rect: "0, 0, 300, 300",
-    color: "#DAA13C"
-  }, {
-    rect: "0, 300, 300, 100",
-    color: "#6D5018"
-  }],
-  text: [{
-    color: "#FFF",
-    font: "40px sans-serif",
-    pos: "40, 160",
-    text: "Animate.css"
-  }, {
-    color: "#FFF",
-    font: "16px sans-serif",
-    pos: "70, 210",
-    text: "を使ってみる"
-  }, {
-    color: "#FFF",
-    font: "24px sans-serif",
-    pos: "30, 360",
-    text: "Animate.cssを学ぼう!"
-  }]
-}];
-
-var canvas, ctx;
-
-function parsePos(str) {
-  var array = str.split(",");
-  return {
-    x: parseInt(array[0].trim(), 10),
-    y: parseInt(array[1].trim(), 10)
-  };
-}
-function parseRect(str) {
-  var array = str.split(",");
-  return {
-    x: parseInt(array[0].trim(), 10),
-    y: parseInt(array[1].trim(), 10),
-    w: parseInt(array[2].trim(), 10),
-    h: parseInt(array[3].trim(), 10)
-  };
-}
-function drawBackground(data) {
-  var r = parseRect(data.rect);
-  ctx.fillStyle = data.color;
-  ctx.fillRect(r.x, r.y, r.w, r.h);
-}
-
-function drawText(data) {
-  var pos = parsePos(data.pos);
-  ctx.fillStyle = data.color;
-  ctx.font = data.font;
-  ctx.fillText(data.text, pos.x, pos.y);
-}
-
-function draw(data) {
-  var background = data.background || [];
-  background.forEach(v => drawBackground(v));
-  var text = data.text || [];
-  text.forEach(v => drawText(v));
-}
-
-function downloadImage() {
-  this.href = canvas.toDataURL();
-}
-
-function getJson() {
-  var text = document.getElementById('text').value;
-  return JSON.parse(text);
-}
-function generate() {
-  try {
-    var json = getJson();
-    draw(json);
-  } catch (e) {
-    alert("Can not parse JSON");
-  }
-}
-
-function sample() {
-  var index = parseInt(this.dataset.index);
-  var text = document.getElementById('text');
-  text.value = JSON.stringify(samples[index], null, 2);
-  generate();
-}
-
-window.addEventListener("load", function() {
-  canvas = document.getElementById('canvas');
-  ctx = canvas.getContext('2d');
-
-  document.getElementById("download").addEventListener("click", downloadImage);
-  document.getElementById("generate").addEventListener("click", generate);
-  [0, 1, 2].forEach(function(i) {
-    var el = document.getElementById("sample" + (i + 1));
-    el.addEventListener("click", sample);
-  });
-  document.getElementById("sample1").click();
-});
-</script>
+  <link rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/pure-min.css" integrity="sha384-UQiGfs9ICog+LwheBSRCt1o5cbyKIHbwjWscjemyBMT9YCUMZffs6UqUTd0hObXD" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/grids-responsive-min.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<h1>BookCover Builder</h1>
-<div>
-  <canvas id="canvas" height="400" width="300"/>
-</div>
-<div>
-  <button id="sample1" data-index="0">Sample1</button>
-  <button id="sample2" data-index="1">Sample2</button>
-  <button id="sample3" data-index="2">Sample3</button>
-</div>
-<div>
-  <textarea id="text" cols="60" rows="20"></textarea>  
-</div>
-<div>
-  <button id="generate">Generate</button>
-  <button><a id="download" download="cover.png">Download</a></button>
-</div>
-
+  <div class="pure-menu pure-menu-horizontal pure-menu-fixed">
+      <a href="#" class="pure-menu-heading pure-menu-link">BookCover Builder</a>
+      <ul class="pure-menu-list">
+          <li class="pure-menu-item"><a href="https://github.com/givery-technology/book-cover" class="pure-menu-link">Github</a></li>
+      </ul>
+  </div>
+  <div class="container pure-g">
+    <div class="cover pure-u-1 pure-u-lg-1-3">
+      <canvas id="canvas" height="400" width="300"></canvas>
+      <div>
+        <button id="sample1" data-index="0" class="pure-button">Sample1</button>
+        <button id="sample2" data-index="1" class="pure-button">Sample2</button>
+        <button id="sample3" data-index="2" class="pure-button">Sample3</button>
+      </div>
+    </div>
+    <div class="json pure-u-1 pure-u-lg-2-3">
+      <div>
+        <form class="pure-form">
+          <textarea id="text" class="pure-input-1"></textarea>
+        </form>
+      </div>
+      <div>
+        <button id="generate" class="pure-button">Generate</button>
+        <button class="pure-button"><a id="download" download="cover.png">Download</a></button>
+      </div>
+    </div>
+  </div>
+  <script src="main.js"></script>
 </body>
 </html>
