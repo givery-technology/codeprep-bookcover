@@ -1,0 +1,44 @@
+canvas {
+  border: 1px solid #CCC;
+  margin-bottom: 20px;
+}
+
+textarea {
+  height: 400px;
+  margin-bottom: 26px;
+}
+
+.container {
+  margin-top: 34px;
+  padding: 40px;
+}
+
+.cover  {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.json {
+  margin-bottom: 20px;
+}
+
+.pure-menu {
+  background: #1f8dd6;
+}
+
+.pure-menu-heading.pure-menu-link {
+  color: #fff;
+}
+
+.pure-menu-link {
+  color: rgb(169, 226, 255);
+}
+
+.pure-menu-link:hover {
+  text-decoration: underline;
+  background-color: transparent;
+}
+
+.pure-menu-list {
+  float: right;
+}
