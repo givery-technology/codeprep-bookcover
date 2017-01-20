@@ -77,7 +77,7 @@
     }]
   }];
 
-  var canvas, ctx;
+  var canvas, ctx, subCanvas, subCtx;
 
   function parsePos(str) {
     var array = str.split(",");
@@ -95,6 +95,53 @@
       h: parseInt(array[3].trim(), 10)
     };
   }
+
+  function toggleDummyCanvas() {
+    var subCanvas = document.getElementById('sub-canvas');
+    if(subCanvas.classList.contains("hide")) {
+      drawAditionalline();
+      subCanvas.classList.remove("hide");
+    } else {
+      clearAditionalline();
+      subCanvas.classList.add("hide");
+    }
+  }
+
+  function clearAditionalline() {
+    var h = subCanvas.height;
+    var w = subCanvas.width;
+    subCtx.clearRect(0, 0 , w, h);
+  }
+
+  function drawAditionalline() {
+    var h = subCanvas.height;
+    var w = subCanvas.width;
+
+    subCtx.beginPath();
+    for(var i = 50; i < w; i = i + 50) {
+      subCtx.moveTo(i, 0);
+      subCtx.lineTo(i, h);
+    }
+
+    for(var i = 50; i < h; i = i + 50) {
+      subCtx.moveTo(0, i);
+      subCtx.lineTo(w, i);
+    }
+
+    subCtx.strokeStyle = 'rgba(55, 55, 55, 0.5)';
+    subCtx.strokeWidth = 1;
+    subCtx.stroke();
+
+    subCtx.beginPath();
+    subCtx.moveTo(w / 2, 0);
+    subCtx.lineTo(w / 2, h);
+    subCtx.moveTo(0, h / 2);
+    subCtx.lineTo(w, h / 2);
+    subCtx.strokeStyle = 'rgba(221, 81, 76, 0.8)';
+    subCtx.stroke();
+
+  }
+
   function drawBackground(data) {
     var r = parseRect(data.rect);
     ctx.fillStyle = data.color;
@@ -143,6 +190,9 @@
     canvas = document.getElementById('canvas');
     ctx = canvas.getContext('2d');
 
+    subCanvas = document.getElementById('sub-canvas');
+    subCtx = subCanvas.getContext('2d');
+
     document.getElementById("download").addEventListener("click", downloadImage);
     var generateBtn = document.getElementById("generate");
     generateBtn.addEventListener("click", generate);
@@ -163,6 +213,8 @@
     } else {
       document.getElementById("sample1").click();
     }
+
+    document.getElementById("additional-line").addEventListener("change", toggleDummyCanvas);
 
   });
 })();
