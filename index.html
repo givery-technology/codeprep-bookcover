@@ -15,7 +15,15 @@
   </div>
   <div class="container pure-g">
     <div class="cover pure-u-1 pure-u-lg-1-3">
-      <canvas id="canvas" height="400" width="300"></canvas>
+      <div class="canvas-container">
+        <canvas id="canvas" height="400" width="300"></canvas>
+        <canvas id="sub-canvas" class="dummy-canvas hide" height="400" width="300"></canvas>
+      </div>
+      <div class="canvas-tools">
+        <label class="pure-checkbox">
+          <input id="additional-line" type="checkbox"> 補助線を表示する
+        </label>
+      </div>
       <div>
         <button id="sample1" data-index="0" class="pure-button">Sample1</button>
         <button id="sample2" data-index="1" class="pure-button">Sample2</button>

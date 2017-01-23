@@ -1,10 +1,9 @@
 canvas {
   border: 1px solid #CCC;
-  margin-bottom: 20px;
 }
 
 textarea {
-  height: 400px;
+  height: 444px;
   margin-bottom: 26px;
 }
 
@@ -18,8 +17,29 @@ textarea {
   text-align: center;
 }
 
+.canvas-container {
+  position: relative;
+}
+
+.dummy-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  z-index: 10;
+}
+
+.canvas-tools {
+  margin: 20px 0;
+}
+
 .json {
   margin-bottom: 20px;
+}
+
+.hide {
+  display: none;
 }
 
 .pure-menu {
