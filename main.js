@@ -5,10 +5,10 @@
   var storageKey = "codeprep_bookcover_builder";
   var samples = [{
     background: [{
-      rect: "0, 0, 300, 300",
+      rect: "0, 0, 300, 290",
       color: "#30DACC"
     }, {
-      rect: "0, 300, 300, 100",
+      rect: "0, 290, 300, 110",
       color: "#176D60"
     }],
     text: [{
@@ -29,10 +29,10 @@
     }]
   }, {
     background: [{
-      rect: "0, 0, 300, 300",
+      rect: "0, 0, 300, 290",
       color: "#58BEC2"
     }, {
-      rect: "0, 300, 300, 100",
+      rect: "0, 290, 300, 110",
       color: "#2C5F62"
     }],
     text: [{
@@ -53,10 +53,10 @@
     }]
   }, {
     background: [{
-      rect: "0, 0, 300, 300",
+      rect: "0, 0, 300, 290",
       color: "#DAA13C"
     }, {
-      rect: "0, 300, 300, 100",
+      rect: "0, 290, 300, 110",
       color: "#6D5018"
     }],
     text: [{
