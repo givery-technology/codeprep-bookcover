@@ -209,6 +209,7 @@
     return JSON.parse(text);
   }
   function generate() {
+    ctx.clearRect(0, 0, 300, 400);
     try {
       var json = getJson();
       draw(json);
