@@ -121,6 +121,7 @@
       y: parseInt(array[1].trim(), 10)
     };
   }
+
   function parseRect(str) {
     var array = str.split(",");
     return {
@@ -132,8 +133,8 @@
   }
 
   function toggleDummyCanvas() {
-    var subCanvas = document.getElementById('sub-canvas');
-    if(subCanvas.classList.contains("hide")) {
+    subCanvas = document.getElementById('sub-canvas');
+    if (subCanvas.classList.contains("hide")) {
       drawAditionalline();
       subCanvas.classList.remove("hide");
     } else {
@@ -145,7 +146,7 @@
   function clearAditionalline() {
     var h = subCanvas.height;
     var w = subCanvas.width;
-    subCtx.clearRect(0, 0 , w, h);
+    subCtx.clearRect(0, 0, w, h);
   }
 
   function drawAditionalline() {
@@ -208,6 +209,7 @@
     var text = document.getElementById('text').value;
     return JSON.parse(text);
   }
+
   function generate() {
     ctx.clearRect(0, 0, 300, 400);
     try {
@@ -242,12 +244,12 @@
 
     var text = document.getElementById('text');
     text.addEventListener("input", function(e) {
-      localStorage.setItem(storageKey ,e.target.value);
+      localStorage.setItem(storageKey, e.target.value);
       generateBtn.click();
     });
 
     var storedBookJson = localStorage.getItem(storageKey)
-    if(storedBookJson) {
+    if (storedBookJson) {
       text.value = storedBookJson;
       generateBtn.click();
     } else {
