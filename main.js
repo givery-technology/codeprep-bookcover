@@ -153,25 +153,28 @@
     var w = subCanvas.width;
 
     subCtx.beginPath();
-    for(var i = 50; i < w; i = i + 50) {
-      subCtx.moveTo(i, 0);
-      subCtx.lineTo(i, h);
-    }
+    [25, 50, 75, 225, 250, 275].map(x => {
+      subCtx.moveTo(x, 0);
+      subCtx.lineTo(x, h);
+    });
 
-    for(var i = 50; i < h; i = i + 50) {
-      subCtx.moveTo(0, i);
-      subCtx.lineTo(w, i);
-    }
+    [45, 75, 105, 185, 215, 245, 300, 315, 330, 360, 375, 390].map(y => {
+      subCtx.moveTo(0, y);
+      subCtx.lineTo(w, y);
+    });
 
     subCtx.strokeStyle = 'rgba(55, 55, 55, 0.5)';
     subCtx.strokeWidth = 1;
     subCtx.stroke();
 
+    // 中心線
     subCtx.beginPath();
     subCtx.moveTo(w / 2, 0);
     subCtx.lineTo(w / 2, h);
-    subCtx.moveTo(0, h / 2);
-    subCtx.lineTo(w, h / 2);
+    subCtx.moveTo(0, 145);
+    subCtx.lineTo(w, 145);
+    subCtx.moveTo(0, 345);
+    subCtx.lineTo(w, 345);
     subCtx.strokeStyle = 'rgba(221, 81, 76, 0.8)';
     subCtx.stroke();
 
