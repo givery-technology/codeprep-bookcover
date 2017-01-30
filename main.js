@@ -4,77 +4,112 @@
 
   var storageKey = "codeprep_bookcover_builder";
   var samples = [{
-    background: [{
-      rect: "0, 0, 300, 290",
-      color: "#30DACC"
-    }, {
-      rect: "0, 290, 300, 110",
-      color: "#176D60"
-    }],
-    text: [{
-      color: "#FFF",
-      font: "56px sans-serif",
-      pos: "40, 160",
-      text: "CSSの色"
-    }, {
-      color: "#FFF",
-      font: "32px sans-serif",
-      pos: "70, 210",
-      text: "を理解する"
-    }, {
-      color: "#FFF",
-      font: "24px sans-serif",
-      pos: "30, 360",
-      text: "CSS色の理論を学ぼう!"
-    }]
+    "background": [{
+        "rect": "0, 0, 300, 290",
+        "color": "#FFF"
+      },
+      {
+        "rect": "0, 290, 300, 110",
+        "color": "#48ACF0"
+      }
+    ],
+    "text": [{
+        "color": "#4e504f",
+        "font": "37px HiraKakuPro-W6",
+        "pos": "60, 140",
+        "text": "はじめての"
+      },
+      {
+        "color": "#48ACF0",
+        "font": "bold 68px HiraKakuProN-W6",
+        "pos": "45, 210",
+        "text": "HTML"
+      },
+      {
+        "color": "#FFF",
+        "font": "20px HiraKakuProN-W3",
+        "pos": "20, 330",
+        "text": "実際にコーディングしながら"
+      },
+      {
+        "color": "#FFF",
+        "font": "20px HiraKakuProN-W3",
+        "pos": "45, 360",
+        "text": "HTMLの基礎を学べる!!"
+      }
+    ]
   }, {
-    background: [{
-      rect: "0, 0, 300, 290",
-      color: "#58BEC2"
-    }, {
-      rect: "0, 290, 300, 110",
-      color: "#2C5F62"
-    }],
-    text: [{
-      color: "#FFF",
-      font: "32px sans-serif",
-      pos: "30, 160",
-      text: "オブジェクト指向"
-    }, {
-      color: "#FFF",
-      font: "28px sans-serif",
-      pos: "40, 210",
-      text: "の基礎を理解する"
-    }, {
-      color: "#FFF",
-      font: "20px sans-serif",
-      pos: "30, 360",
-      text: "オブジェクト指向を学ぼう!"
-    }]
+    "background": [{
+        "rect": "0, 0, 300, 300",
+        "color": "#30DACC"
+      },
+      {
+        "rect": "0, 290, 300, 110",
+        "color": "#176D60"
+      }
+    ],
+    "text": [{
+        "color": "#FFF",
+        "font": "56px HiraKakuProN-W6",
+        "pos": "32, 160",
+        "text": "CSSの色"
+      },
+      {
+        "color": "#FFF",
+        "font": "28px HiraKakuProN-W3",
+        "pos": "125, 210",
+        "text": "を理解する"
+      },
+      {
+        "color": "#FFF",
+        "font": "24px HiraKakuProN-W3",
+        "pos": "30, 355",
+        "text": "CSS色の理論を学ぼう!"
+      }
+    ]
   }, {
-    background: [{
-      rect: "0, 0, 300, 290",
-      color: "#DAA13C"
-    }, {
-      rect: "0, 290, 300, 110",
-      color: "#6D5018"
-    }],
-    text: [{
-      color: "#FFF",
-      font: "40px sans-serif",
-      pos: "40, 160",
-      text: "Animate.css"
-    }, {
-      color: "#FFF",
-      font: "16px sans-serif",
-      pos: "70, 210",
-      text: "を使ってみる"
-    }, {
-      color: "#FFF",
-      font: "24px sans-serif",
-      pos: "30, 360",
-      text: "Animate.cssを学ぼう!"
-    }]
+    "background": [{
+        "rect": "0, 0, 300, 290",
+        "color": "#49C6E5"
+      },
+      {
+        "rect": "25, 220, 245, 1",
+        "color": "#fff"
+      },
+      {
+        "rect": "25, 100, 245, 1",
+        "color": "#fff"
+      },
+      {
+        "rect": "0, 290, 300, 110",
+        "color": "#1164B4"
+      }
+    ],
+    "text": [{
+        "color": "#FFF",
+        "font": "27px HiraKakuProN-W3",
+        "pos": "25, 140",
+        "text": "HTMLとCSSで作る"
+      },
+      {
+        "color": "#FFF",
+        "font": "56px HiraKakuProN-W6",
+        "pos": "25, 200",
+        "text": "Web名刺"
+      },
+      {
+        "color": "#FFF",
+        "font": "20px HiraKakuProN-W3",
+        "pos": "10, 340",
+        "text": "自分だけのオリジナルの名刺を"
+      },
+      {
+        "color": "#FFF",
+        "font": "20px HiraKakuProN-W3",
+        "pos": "80, 365",
+        "text": "作ってみよう！"
+      }
+    ]
   }];
 
   var canvas, ctx, subCanvas, subCtx;
