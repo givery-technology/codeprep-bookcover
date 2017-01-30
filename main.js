@@ -4,77 +4,112 @@
 
   var storageKey = "codeprep_bookcover_builder";
   var samples = [{
-    background: [{
-      rect: "0, 0, 300, 290",
-      color: "#30DACC"
-    }, {
-      rect: "0, 290, 300, 110",
-      color: "#176D60"
-    }],
-    text: [{
-      color: "#FFF",
-      font: "56px sans-serif",
-      pos: "40, 160",
-      text: "CSSの色"
-    }, {
-      color: "#FFF",
-      font: "32px sans-serif",
-      pos: "70, 210",
-      text: "を理解する"
-    }, {
-      color: "#FFF",
-      font: "24px sans-serif",
-      pos: "30, 360",
-      text: "CSS色の理論を学ぼう!"
-    }]
+    "background": [{
+        "rect": "0, 0, 300, 290",
+        "color": "#FFF"
+      },
+      {
+        "rect": "0, 290, 300, 110",
+        "color": "#48ACF0"
+      }
+    ],
+    "text": [{
+        "color": "#4e504f",
+        "font": "37px HiraKakuPro-W6",
+        "pos": "60, 140",
+        "text": "はじめての"
+      },
+      {
+        "color": "#48ACF0",
+        "font": "bold 68px HiraKakuProN-W6",
+        "pos": "45, 210",
+        "text": "HTML"
+      },
+      {
+        "color": "#FFF",
+        "font": "20px HiraKakuProN-W3",
+        "pos": "20, 330",
+        "text": "実際にコーディングしながら"
+      },
+      {
+        "color": "#FFF",
+        "font": "20px HiraKakuProN-W3",
+        "pos": "45, 360",
+        "text": "HTMLの基礎を学べる!!"
+      }
+    ]
   }, {
-    background: [{
-      rect: "0, 0, 300, 290",
-      color: "#58BEC2"
-    }, {
-      rect: "0, 290, 300, 110",
-      color: "#2C5F62"
-    }],
-    text: [{
-      color: "#FFF",
-      font: "32px sans-serif",
-      pos: "30, 160",
-      text: "オブジェクト指向"
-    }, {
-      color: "#FFF",
-      font: "28px sans-serif",
-      pos: "40, 210",
-      text: "の基礎を理解する"
-    }, {
-      color: "#FFF",
-      font: "20px sans-serif",
-      pos: "30, 360",
-      text: "オブジェクト指向を学ぼう!"
-    }]
+    "background": [{
+        "rect": "0, 0, 300, 300",
+        "color": "#30DACC"
+      },
+      {
+        "rect": "0, 290, 300, 110",
+        "color": "#176D60"
+      }
+    ],
+    "text": [{
+        "color": "#FFF",
+        "font": "56px HiraKakuProN-W6",
+        "pos": "32, 160",
+        "text": "CSSの色"
+      },
+      {
+        "color": "#FFF",
+        "font": "28px HiraKakuProN-W3",
+        "pos": "125, 210",
+        "text": "を理解する"
+      },
+      {
+        "color": "#FFF",
+        "font": "24px HiraKakuProN-W3",
+        "pos": "30, 355",
+        "text": "CSS色の理論を学ぼう!"
+      }
+    ]
   }, {
-    background: [{
-      rect: "0, 0, 300, 290",
-      color: "#DAA13C"
-    }, {
-      rect: "0, 290, 300, 110",
-      color: "#6D5018"
-    }],
-    text: [{
-      color: "#FFF",
-      font: "40px sans-serif",
-      pos: "40, 160",
-      text: "Animate.css"
-    }, {
-      color: "#FFF",
-      font: "16px sans-serif",
-      pos: "70, 210",
-      text: "を使ってみる"
-    }, {
-      color: "#FFF",
-      font: "24px sans-serif",
-      pos: "30, 360",
-      text: "Animate.cssを学ぼう!"
-    }]
+    "background": [{
+        "rect": "0, 0, 300, 290",
+        "color": "#49C6E5"
+      },
+      {
+        "rect": "25, 220, 245, 1",
+        "color": "#fff"
+      },
+      {
+        "rect": "25, 100, 245, 1",
+        "color": "#fff"
+      },
+      {
+        "rect": "0, 290, 300, 110",
+        "color": "#1164B4"
+      }
+    ],
+    "text": [{
+        "color": "#FFF",
+        "font": "27px HiraKakuProN-W3",
+        "pos": "25, 140",
+        "text": "HTMLとCSSで作る"
+      },
+      {
+        "color": "#FFF",
+        "font": "56px HiraKakuProN-W6",
+        "pos": "25, 200",
+        "text": "Web名刺"
+      },
+      {
+        "color": "#FFF",
+        "font": "20px HiraKakuProN-W3",
+        "pos": "10, 340",
+        "text": "自分だけのオリジナルの名刺を"
+      },
+      {
+        "color": "#FFF",
+        "font": "20px HiraKakuProN-W3",
+        "pos": "80, 365",
+        "text": "作ってみよう！"
+      }
+    ]
   }];
 
   var canvas, ctx, subCanvas, subCtx;
@@ -86,6 +121,7 @@
       y: parseInt(array[1].trim(), 10)
     };
   }
+
   function parseRect(str) {
     var array = str.split(",");
     return {
@@ -97,8 +133,8 @@
   }
 
   function toggleDummyCanvas() {
-    var subCanvas = document.getElementById('sub-canvas');
-    if(subCanvas.classList.contains("hide")) {
+    subCanvas = document.getElementById('sub-canvas');
+    if (subCanvas.classList.contains("hide")) {
       drawAditionalline();
       subCanvas.classList.remove("hide");
     } else {
@@ -110,7 +146,7 @@
   function clearAditionalline() {
     var h = subCanvas.height;
     var w = subCanvas.width;
-    subCtx.clearRect(0, 0 , w, h);
+    subCtx.clearRect(0, 0, w, h);
   }
 
   function drawAditionalline() {
@@ -118,25 +154,28 @@
     var w = subCanvas.width;
 
     subCtx.beginPath();
-    for(var i = 50; i < w; i = i + 50) {
-      subCtx.moveTo(i, 0);
-      subCtx.lineTo(i, h);
-    }
+    [25, 50, 75, 225, 250, 275].map(x => {
+      subCtx.moveTo(x, 0);
+      subCtx.lineTo(x, h);
+    });
 
-    for(var i = 50; i < h; i = i + 50) {
-      subCtx.moveTo(0, i);
-      subCtx.lineTo(w, i);
-    }
+    [45, 75, 105, 185, 215, 245, 300, 315, 330, 360, 375, 390].map(y => {
+      subCtx.moveTo(0, y);
+      subCtx.lineTo(w, y);
+    });
 
     subCtx.strokeStyle = 'rgba(55, 55, 55, 0.5)';
     subCtx.strokeWidth = 1;
     subCtx.stroke();
 
+    // 中心線
     subCtx.beginPath();
     subCtx.moveTo(w / 2, 0);
     subCtx.lineTo(w / 2, h);
-    subCtx.moveTo(0, h / 2);
-    subCtx.lineTo(w, h / 2);
+    subCtx.moveTo(0, 145);
+    subCtx.lineTo(w, 145);
+    subCtx.moveTo(0, 345);
+    subCtx.lineTo(w, 345);
     subCtx.strokeStyle = 'rgba(221, 81, 76, 0.8)';
     subCtx.stroke();
 
@@ -170,7 +209,9 @@
     var text = document.getElementById('text').value;
     return JSON.parse(text);
   }
+
   function generate() {
+    ctx.clearRect(0, 0, 300, 400);
     try {
       var json = getJson();
       draw(json);
@@ -203,11 +244,12 @@
 
     var text = document.getElementById('text');
     text.addEventListener("input", function(e) {
-      localStorage.setItem(storageKey ,e.target.value);
+      localStorage.setItem(storageKey, e.target.value);
+      generateBtn.click();
     });
 
     var storedBookJson = localStorage.getItem(storageKey)
-    if(storedBookJson) {
+    if (storedBookJson) {
       text.value = storedBookJson;
       generateBtn.click();
     } else {

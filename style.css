@@ -54,7 +54,10 @@ textarea {
   color: rgb(169, 226, 255);
 }
 
-.pure-menu-link:hover {
+.pure-menu-link:hover,
+.pure-menu-link:active,
+.pure-menu-link:visited,
+.pure-menu-link:focus {
   text-decoration: underline;
   background-color: transparent;
 }
