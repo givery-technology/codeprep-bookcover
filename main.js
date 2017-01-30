@@ -239,6 +239,7 @@
     var text = document.getElementById('text');
     text.addEventListener("input", function(e) {
       localStorage.setItem(storageKey ,e.target.value);
+      generateBtn.click();
     });
 
     var storedBookJson = localStorage.getItem(storageKey)
