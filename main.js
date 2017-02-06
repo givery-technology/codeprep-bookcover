@@ -201,12 +201,18 @@
     var image = new Image();
     image.src = data.src;
     var rect = parseRect(data.rect);
+
+    ctx.save();
+    if(data.opacity >= 0) {
+      ctx.globalAlpha = data.opacity;
+    }
     if (data.capture) {
       var cap = parseRect(data.capture);
       ctx.drawImage(image, cap.x, cap.y, cap.w, cap.h, rect.x, rect.y, rect.w, rect.h);
     } else {
       ctx.drawImage(image, rect.x, rect.y, rect.w, rect.h);
     }
+    ctx.restore();
   }
 
   function draw(data) {
@@ -214,7 +220,7 @@
     background.forEach(v => drawBackground(v));
     var text = data.text || [];
     text.forEach(v => drawText(v));
-    var image = data.image || [];
+    var image = data.images || [];
     image.forEach(v => drawImage(v));
   }
 
