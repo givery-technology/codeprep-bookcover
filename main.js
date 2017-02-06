@@ -194,11 +194,28 @@
     ctx.fillText(data.text, pos.x, pos.y);
   }
 
+  function drawImage(data) {
+    if (!data.rect) {
+      return;
+    }
+    var image = new Image();
+    image.src = data.src;
+    var rect = parseRect(data.rect);
+    if (data.capture) {
+      var cap = parseRect(data.capture);
+      ctx.drawImage(image, cap.x, cap.y, cap.w, cap.h, rect.x, rect.y, rect.w, rect.h);
+    } else {
+      ctx.drawImage(image, rect.x, rect.y, rect.w, rect.h);
+    }
+  }
+
   function draw(data) {
     var background = data.background || [];
     background.forEach(v => drawBackground(v));
     var text = data.text || [];
     text.forEach(v => drawText(v));
+    var image = data.image || [];
+    image.forEach(v => drawImage(v));
   }
 
   function downloadImage() {
@@ -245,7 +262,12 @@
     var text = document.getElementById('text');
     text.addEventListener("input", function(e) {
       localStorage.setItem(storageKey, e.target.value);
-      generateBtn.click();
+      ctx.clearRect(0, 0, 300, 400);
+      try {
+        var json = getJson();
+        draw(json);
+      } catch (e) {
+      }
     });
 
     var storedBookJson = localStorage.getItem(storageKey)
