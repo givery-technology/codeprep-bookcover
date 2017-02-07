@@ -199,6 +199,10 @@
       return;
     }
     var image = new Image();
+
+    // Avoid CORS issue with image
+    // http://stackoverflow.com/a/20424457/1855830
+    image.setAttribute('crossOrigin', 'anonymous');
     image.src = data.src;
     var rect = parseRect(data.rect);
 
