@@ -222,10 +222,10 @@
   function draw(data) {
     var background = data.background || [];
     background.forEach(v => drawBackground(v));
-    var text = data.text || [];
-    text.forEach(v => drawText(v));
     var image = data.images || [];
     image.forEach(v => drawImage(v));
+    var text = data.text || [];
+    text.forEach(v => drawText(v));
   }
 
   function downloadImage() {
